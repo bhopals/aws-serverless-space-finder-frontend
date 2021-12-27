@@ -1,7 +1,12 @@
 import React from "react";
-
-function App() {
-  return <div>BHOPAL</div>;
+import { User } from "../model/Model";
+import { AuthService } from "../services/AuthService";
+interface AppState {
+  user: User | undefined;
 }
-
-export default App;
+export class App extends React.Component<{}, AppState> {
+  private authService: AuthService = new AuthService();
+  render() {
+    return <div>App Works!!</div>;
+  }
+}
