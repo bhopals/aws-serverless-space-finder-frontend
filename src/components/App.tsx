@@ -43,7 +43,15 @@ export class App extends React.Component<{}, AppState> {
                   />
                 }
               />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={
+                  <Profile
+                    authService={this.authService}
+                    user={this.state.user}
+                  />
+                }
+              />
             </Routes>
           </BrowserRouter>
         </div>
