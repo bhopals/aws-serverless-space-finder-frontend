@@ -43,7 +43,7 @@ export class Spaces extends Component<SpacesProps, SpaceState> {
     }
   }
 
-  private render() {
+  public render() {
     return (
       <div>
         <h2>Welcome to the Spaces Pages</h2>
