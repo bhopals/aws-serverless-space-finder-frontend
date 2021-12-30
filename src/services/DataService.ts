@@ -18,6 +18,11 @@ export class DataService {
         location: "Toronto",
         name: "Best Location Toronto",
         spaceId: "789",
+      },
+      {
+        location: "New York",
+        name: "Best Location New York",
+        spaceId: "658",
       }
     );
     return result;

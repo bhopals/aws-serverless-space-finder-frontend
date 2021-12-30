@@ -6,12 +6,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
-
+import { Spaces } from "./spaces/Spaces";
+import { DataService } from "../services/DataService";
 interface AppState {
   user: User | undefined;
 }
 export class App extends React.Component<{}, AppState> {
   private authService: AuthService = new AuthService();
+  private dataService: DataService = new DataService();
+
   constructor(props: any) {
     super(props);
     this.state = {
@@ -50,6 +53,10 @@ export class App extends React.Component<{}, AppState> {
                     user={this.state.user}
                   />
                 }
+              />
+              <Route
+                path="/spaces"
+                element={<Spaces dataService={this.dataService} />}
               />
             </Routes>
           </BrowserRouter>
