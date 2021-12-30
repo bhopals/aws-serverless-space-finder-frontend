@@ -14,6 +14,7 @@ interface ProfileProps {
 export class Profile extends Component<ProfileProps, ProfileState> {
   render() {
     let profileSpace;
+    console.log("this.props>", this.props);
     if (this.props.user) {
       profileSpace = <h3>Hello {this.props.user}</h3>;
     } else {

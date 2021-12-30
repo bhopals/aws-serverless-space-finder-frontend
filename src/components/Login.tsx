@@ -1,7 +1,7 @@
 import { Component, SyntheticEvent } from "react";
+// import { useNavigate } from "react-router-dom";
 import { User } from "../model/Model";
 import { AuthService } from "../services/AuthService";
-import history from "../utils/history";
 
 interface LoginProps {
   authService: AuthService;
@@ -26,7 +26,7 @@ export class Login extends Component<LoginProps, LoginState> {
     loginAttempted: false,
     loginSuccessfull: false,
   };
-
+  // navigate = useNavigate();
   private setUserName(event: CustomEvent): void {
     this.setState({ userName: event.target.value });
   }
@@ -45,7 +45,7 @@ export class Login extends Component<LoginProps, LoginState> {
     if (result) {
       this.setState({ loginSuccessfull: true });
       this.props.setUser(result);
-      history.push("/profile");
+      // this.navigate("/profile");
     } else {
       this.setState({ loginSuccessfull: false });
     }
