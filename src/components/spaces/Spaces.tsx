@@ -3,6 +3,7 @@ import { DataService } from "../../services/DataService";
 import { Space } from "./../../model/Model";
 import { SpaceComponent } from "./SpaceComponent";
 import { ConfirmModalComponent } from "./ConfirmModalComponent";
+import { Link } from "react-router-dom";
 interface SpacesProps {
   dataService: DataService;
 }
@@ -70,6 +71,7 @@ export class Spaces extends Component<SpacesProps, SpaceState> {
     return (
       <div>
         <h2>Welcome to the Spaces Pages</h2>
+        <Link to="/createSpace">Create Space</Link>
         {this.renderSpaces()}
         <ConfirmModalComponent
           close={this.closeModal}

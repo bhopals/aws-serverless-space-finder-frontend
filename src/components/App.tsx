@@ -8,6 +8,7 @@ import { Home } from "./Home";
 import { Profile } from "./Profile";
 import { Spaces } from "./spaces/Spaces";
 import { DataService } from "../services/DataService";
+import { CreateSpace } from "./spaces/CreateSpace";
 interface AppState {
   user: User | undefined;
 }
@@ -55,6 +56,11 @@ export class App extends React.Component<{}, AppState> {
               <Route
                 path="/spaces"
                 element={<Spaces dataService={this.dataService} />}
+              />
+            </Routes>
+            <Route
+                path="/createSpace"
+                element={<CreateSpace dataService={this.dataService} />}
               />
             </Routes>
           </BrowserRouter>
