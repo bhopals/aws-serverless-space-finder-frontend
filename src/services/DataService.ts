@@ -29,7 +29,6 @@ export class DataService {
   }
 
   public async reserveSpace(spaceId: string): Promise<string | undefined> {
-    console.log("reserveSpace>spaceId>", spaceId);
     if (spaceId === "123") {
       return "555";
     } else {

@@ -31,7 +31,6 @@ export class Spaces extends Component<SpacesProps, SpaceState> {
   }
 
   private async reserveSpace(spaceId: string) {
-    console.log("reserveSpace>", spaceId);
     const reservationResult = await this.props.dataService.reserveSpace(
       spaceId
     );

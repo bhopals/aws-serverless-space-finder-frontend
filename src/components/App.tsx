@@ -23,9 +23,7 @@ export class App extends React.Component<{}, AppState> {
     this.setUser = this.setUser.bind(this);
   }
   private setUser(user: User) {
-    console.log("SETUSER>", user);
     this.setState({ user: user });
-    console.log("this.state>", this.state);
   }
 
   render() {
