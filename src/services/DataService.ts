@@ -27,4 +27,13 @@ export class DataService {
     );
     return result;
   }
+
+  public async reserveSpace(spaceId: string): Promise<string | undefined> {
+    console.log("reserveSpace>spaceId>", spaceId);
+    if (spaceId === "123") {
+      return "555";
+    } else {
+      return undefined;
+    }
+  }
 }
