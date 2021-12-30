@@ -43,10 +43,10 @@ export class Profile extends Component<ProfileProps, ProfileState> {
   render() {
     let profileSpace;
     console.log("this.props>", this.props);
-    if (this.props.user || true) {
+    if (this.props.user) {
       profileSpace = (
         <div>
-          <h3>Hello {this.props.user}</h3>
+          <h3>Hello {this.props.user.userName}</h3>
           Here are your attributes
           {this.renderUserAttributes()}
         </div>
