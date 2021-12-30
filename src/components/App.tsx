@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../model/Model";
+import User from "../model/Model";
 import { AuthService } from "../services/AuthService";
 import { Login } from "./Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

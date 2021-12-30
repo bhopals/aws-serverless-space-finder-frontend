@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { User, UserAttributes } from "../model/Model";
+import User, { UserAttributes } from "../model/Model";
 import { AuthService } from "../services/AuthService";
 
 interface ProfileState {

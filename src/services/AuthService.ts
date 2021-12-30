@@ -1,16 +1,49 @@
-import { User, UserAttributes } from "../model/Model";
+import User, { UserAttributes } from "../model/Model";
+import { Auth } from "aws-amplify";
+import Amplify from "aws-amplify";
+import { config } from "./config";
+import { CognitoUser } from "@aws-amplify/auth";
+
+import * as AWS from "aws-sdk";
+import { Credentials } from "aws-sdk/lib/credentials";
+
+Amplify.configure({
+  Auth: {
+    mandatorySignIn: false,
+    region: config.REGION,
+    userPoolId: config.USER_POOL_ID,
+    userPoolWebClientId: config.APP_CLIENT_ID,
+    identityPoolId: config.IDENTITY_POOL_ID,
+    authenticationFlowType: "USER_PASSWORD_AUTH",
+  },
+});
 
 export class AuthService {
+  // public async login(
+  //   userName: string,
+  //   password: string
+  // ): Promise<User | undefined> {
+  //   if (userName === "user" && password === "123") {
+  //     return {
+  //       userName,
+  //       email: "user@example.com",
+  //     };
+  //   } else {
+  //     return undefined;
+  //   }
+  // }
+
   public async login(
     userName: string,
     password: string
   ): Promise<User | undefined> {
-    if (userName === "user" && password === "123") {
+    try {
+      const user = await Auth.signIn(userName, password);
       return {
-        userName,
-        email: "user@example.com",
+        cognitoUser: user,
+        userName: user.getUserName(),
       };
-    } else {
+    } catch (error) {
       return undefined;
     }
   }
@@ -19,11 +52,8 @@ export class AuthService {
     user: User
   ): Promise<UserAttributes[] | undefined> {
     const result: UserAttributes[] = [];
-    result.push({ Name: "description", Value: "Best user ever!" });
-    result.push({ Name: "job", Value: "Engineer" });
-    result.push({ Name: "age", Value: "25" });
-    result.push({ Name: "experience", Value: "3 years" });
-
+    const attributes = await Auth.userAttributes(user.cognitoUser);
+    result.push(...attributes);
     return result;
   }
 }

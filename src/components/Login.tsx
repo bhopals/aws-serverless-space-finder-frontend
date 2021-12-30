@@ -1,6 +1,6 @@
 import { Component, SyntheticEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import { User } from "../model/Model";
+// import { useNavigate } from "react-router-dom";
+import User from "../model/Model";
 import { AuthService } from "../services/AuthService";
 
 interface LoginProps {

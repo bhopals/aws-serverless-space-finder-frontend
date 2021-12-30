@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { User } from "../model/Model";
+import User from "../model/Model";
 
 export class Navbar extends Component<{
   user: User | undefined;
