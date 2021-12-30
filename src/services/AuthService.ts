@@ -56,4 +56,35 @@ export class AuthService {
     result.push(...attributes);
     return result;
   }
+
+  public async getAWSTemporaryCreds(user: CognitoUser) {
+    const cognitoIdentityPool = `cognito-idp.${config.REGION}.amazonaws.com/${config.USER_POOL_ID}`;
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials(
+      {
+        IdentityPoolId: config.IDENTITY_POOL_ID,
+        Logins: {
+          [cognitoIdentityPool]: user
+            .getSignInUserSession()
+            ?.getIdToken()
+            .getJwtToken(),
+        },
+      },
+      {
+        region: config.REGION,
+      }
+    );
+    await this.refreshCredentials();
+  }
+
+  private async refreshCredentials(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      (AWS.config.credentials as Credentials).refresh((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
 }

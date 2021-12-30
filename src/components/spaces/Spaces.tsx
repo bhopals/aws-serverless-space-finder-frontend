@@ -71,7 +71,7 @@ export class Spaces extends Component<SpacesProps, SpaceState> {
     return (
       <div>
         <h2>Welcome to the Spaces Pages</h2>
-        <Link to="/createSpace">Create Space</Link>
+        <Link to="/createSpace">Create Space</Link> <br />
         {this.renderSpaces()}
         <ConfirmModalComponent
           close={this.closeModal}
