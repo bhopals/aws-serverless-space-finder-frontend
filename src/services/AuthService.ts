@@ -62,6 +62,7 @@ export class AuthService {
     AWS.config.credentials = new AWS.CognitoIdentityCredentials(
       {
         IdentityPoolId: config.IDENTITY_POOL_ID,
+        //@ts-ignore
         Logins: {
           [cognitoIdentityPool]: user
             .getSignInUserSession()

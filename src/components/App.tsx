@@ -25,7 +25,7 @@ export class App extends React.Component<{}, AppState> {
   }
   private async setUser(user: User) {
     this.setState({ user: user });
-    await this.authService.getAWSTemporaryCreds(user.cognitoUser)
+    await this.authService.getAWSTemporaryCreds(user.cognitoUser);
   }
 
   render() {
@@ -58,8 +58,7 @@ export class App extends React.Component<{}, AppState> {
                 path="/spaces"
                 element={<Spaces dataService={this.dataService} />}
               />
-            </Routes>
-            <Route
+              <Route
                 path="/createSpace"
                 element={<CreateSpace dataService={this.dataService} />}
               />
