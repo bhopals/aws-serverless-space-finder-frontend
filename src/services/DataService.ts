@@ -7,9 +7,7 @@ config.update({
   region: appConfig.REGION,
 });
 export class DataService {
-  // private s3Client = new S3({
-  //   region: appConfig.REGION,
-  // });
+  private s3Client: S3;
 
   public async createSpace(iCreateSpace: ICreateSpaceState) {
     if (iCreateSpace.photo) {
@@ -31,11 +29,20 @@ export class DataService {
     return JSON.stringify(resultJSON.id);
   }
 
+  private getS3Client(): S3 {
+    if (this.s3Client) {
+      return this.s3Client;
+    } else {
+      this.s3Client = new S3({
+        region: appConfig.REGION,
+      });
+      return this.s3Client;
+    }
+  }
+
   public async uploadPublicFile(file: File, bucket: string) {
     const fileName = generateRandomId() + file.name;
-    const uploadResult = await new S3({
-      region: appConfig.REGION,
-    })
+    const uploadResult = await this.getS3Client()
       .upload({
         Bucket: bucket,
         Key: fileName,
