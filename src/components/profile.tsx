@@ -28,7 +28,7 @@ export class Profile extends Component<ProfileProps, ProfileState> {
     const rows = [];
     for (const userAttr of this.state.userAttributes) {
       rows.push(
-        <tr key={userAttr.Name}>
+        <tr key={userAttr.Name} id="user-row">
           <td>{userAttr.Name}</td>
           <td>{userAttr.Value}</td>
         </tr>
